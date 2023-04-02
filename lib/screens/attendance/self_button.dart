@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'package:project/screens/attendance/hello.dart';
 import 'package:project/screens/attendance/staff_camera.dart';
 
 class SelfButtonPage extends StatefulWidget {

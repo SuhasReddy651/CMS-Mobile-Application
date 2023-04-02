@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:project/screens/attendance/recognition.dart';
-import 'package:project/screens/attendance/registration.dart';
 import 'package:project/screens/common%20screens/empty_page.dart';
 
 import '../parent/parent_dash.dart';
@@ -282,7 +280,7 @@ class _AttMangHomeState extends State<AttMangHome> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const RegistrationScreen())); //registration
+                                const EmptyPage())); //registration
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(screenWidth - 30, 50)),
@@ -297,7 +295,7 @@ class _AttMangHomeState extends State<AttMangHome> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const RecognitionScreen())); //Recognition
+                                const EmptyPage())); //Recognition
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(screenWidth - 30, 50)),
