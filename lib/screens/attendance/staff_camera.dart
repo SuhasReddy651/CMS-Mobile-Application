@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -159,22 +160,18 @@ class _PreviewState extends State<Preview> {
     try {
 // encode the image file as base64 string
       // send POST request to Flask API for face recognition
+      final headers = {"Content-Type": "multipart/form-data"};
       var request = http.MultipartRequest(
           "POST", Uri.parse("http://192.168.0.100:5000/face_recognition"));
+
       request.files.add(await http.MultipartFile.fromPath(
         'image',
         widget.imagePath,
       ));
-      var res = await request.send().then((response) {
-        if (response.statusCode == 200) {
-          setState(() {
-            _responseMessage =
-                response.stream.bytesToString().then(json.decode).toString();
-          });
-        } else {
-          throw Exception('Failed to send image for recognition');
-        }
-      });
+      var response = await request.send();
+      http.Response res = await http.Response.fromStream(response);
+      final resJson = jsonDecode(res.body);
+      return resJson;
     } catch (e) {
       _showErrorDialog(context);
     }
