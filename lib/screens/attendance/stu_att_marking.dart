@@ -26,7 +26,7 @@ class _StudentAttendanceState extends State<StudentAttendance> {
 
       if (_cameras.isNotEmpty) {
         _cameraController =
-            CameraController(_cameras[0], ResolutionPreset.high);
+            CameraController(_cameras[0], ResolutionPreset.medium);
         _cameraController.initialize().then((_) {
           if (!mounted) {
             return;
@@ -133,6 +133,7 @@ class StuPreview extends StatefulWidget {
   const StuPreview({Key? key, required this.imagePath}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _StuPreviewState createState() => _StuPreviewState();
 }
 

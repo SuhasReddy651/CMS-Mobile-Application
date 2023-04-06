@@ -116,7 +116,7 @@ class _StaffRegTTState extends State<StaffRegTT> {
     String currentUserId = FirebaseAuth.instance.currentUser!.uid;
     return StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         stream: FirebaseFirestore.instance
-            .collection('staff')
+            .collection('users')
             .doc(currentUserId)
             .snapshots(),
         builder: (BuildContext context,
@@ -132,13 +132,9 @@ class _StaffRegTTState extends State<StaffRegTT> {
               backgroundColor: Colors.black,
             ),
             body: Container(
-                margin: const EdgeInsets.only(top: 50, bottom: 50),
-                child: InteractiveViewer(
-                  // ignore: sort_child_properties_last
-                  child: Image(image: NetworkImage(photo)),
-                  minScale: 0.1,
-                  maxScale: 5.0,
-                )),
+                child: InAppWebView(
+              initialUrlRequest: URLRequest(url: Uri.parse(photo)),
+            )),
           );
         });
   }

@@ -22,7 +22,7 @@ class _StaffProf extends State<StaffProf> {
         builder: (BuildContext context,
             AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot) {
           if (!snapshot.hasData || snapshot.data == null) {
-            return const CircularProgressIndicator();
+            return Center(child: const CircularProgressIndicator());
           }
           final data = snapshot.data!.data();
           final photo = data!['photo'],

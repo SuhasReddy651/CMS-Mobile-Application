@@ -29,7 +29,9 @@ class _StaffDashState extends State<StaffDash> {
       builder: (BuildContext context,
           AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot) {
         if (!snapshot.hasData || snapshot.data == null) {
-          return const CircularProgressIndicator();
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
         final data = snapshot.data!.data();
         late String photo = data!['photo'], name = data!['name'];

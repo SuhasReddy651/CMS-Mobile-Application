@@ -29,33 +29,6 @@ class _StuAttenDashState extends State<StuAttenDash> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Hourly(),
-                    ),
-                  );
-                },
-                child: Container(
-                  margin: const EdgeInsets.all(30.0),
-                  padding: const EdgeInsets.all(30.0),
-                  height: 100,
-                  width: 900,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: const Color.fromARGB(255, 128, 19, 51)),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Hourly Attendance",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
                       builder: (context) => const DailyAtt(),
                     ),
                   );
@@ -127,37 +100,6 @@ class _StuAttenDashState extends State<StuAttenDash> {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Hourly extends StatefulWidget {
-  const Hourly({super.key});
-
-  @override
-  State<Hourly> createState() => _HourlyState();
-}
-
-class _HourlyState extends State<Hourly> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Hourly Attendance"),
-        backgroundColor: Colors.black,
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        color: const Color.fromARGB(255, 21, 21, 21),
-        child: const Text(
-          "This will be updated soon",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30,
-            fontFamily: "Georgia",
-          ),
-        ),
       ),
     );
   }

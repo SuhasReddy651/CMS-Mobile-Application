@@ -209,31 +209,16 @@ class _StaffCMState extends State<StaffCM> {
                 ],
               ),
             ),
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  margin: const EdgeInsets.only(top: 20.0, bottom: 0),
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    "/Users/suhas/Coding/cmsa/assets/logo2.png",
-                    height: 100,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 0,
-                    bottom: 30,
-                  ),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Developed by @ssr_software",
-                    style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
-                  ),
-                ),
-              ],
+            Container(
+              padding: const EdgeInsets.only(
+                top: 20.0,
+              ),
+              margin: const EdgeInsets.only(top: 20.0, bottom: 0),
+              alignment: Alignment.center,
+              child: Image.asset(
+                "assets/logo2.png",
+                height: 100,
+              ),
             ),
           ],
         ),

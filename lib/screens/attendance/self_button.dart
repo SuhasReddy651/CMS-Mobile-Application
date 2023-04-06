@@ -72,12 +72,13 @@ class _SelfButtonPageState extends State<SelfButtonPage> {
                       // Check location
                       final position = await _getCurrentPosition();
                       final instituteLocation = await _getInstituteLocation();
-                      final distance = await Geolocator.distanceBetween(
+                      final distance = Geolocator.distanceBetween(
                           position.latitude,
                           position.longitude,
                           instituteLocation.latitude,
                           instituteLocation.longitude);
                       if (distance > 200) {
+                        String dis = distance as String;
                         _showError('Be in the location');
                         setState(() {
                           _isLoading = false;
@@ -135,7 +136,7 @@ class _SelfButtonPageState extends State<SelfButtonPage> {
   Future<Position> _getInstituteLocation() async {
     final snapshot = await FirebaseFirestore.instance
         .collection('locations')
-        .doc('institute')
+        .doc('college')
         .get();
     final location = snapshot['location'];
     return Position(

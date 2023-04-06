@@ -295,7 +295,7 @@ class LORForm extends StatelessWidget {
       body: InAppWebView(
         initialUrlRequest: URLRequest(
             url: Uri.parse(
-                "https://drive.google.com/drive/folders/1WJmo1kMG60uECD4o-6yoKUmd9YjUyuLN?usp=sharing")),
+                "https://drive.google.com/file/d/1yXX_gCmIIPC0dJGn9BY9KpxsbJ-THpX-/view?usp=sharing")),
       ),
     );
   }
@@ -941,7 +941,7 @@ class GRE extends StatelessWidget {
       body: InAppWebView(
         initialUrlRequest: URLRequest(
             url: Uri.parse(
-                "https://drive.google.com/drive/folders/1wQKdUw32HfZyIEqXRV4jXO8I2kQ5sTAW?usp=sharing")),
+                "https://drive.google.com/drive/folders/1b6356GARhTRnJHowmFlrhiEqUr2H-Hwj?usp=sharing")),
       ),
     );
   }
@@ -960,7 +960,7 @@ class GMAT extends StatelessWidget {
       body: InAppWebView(
         initialUrlRequest: URLRequest(
             url: Uri.parse(
-                "https://drive.google.com/drive/folders/15JsDZkXaccSDncU7pN_z3fLcxkz3sbRh?usp=sharing")),
+                "https://drive.google.com/drive/folders/1cFmn1WCqahvlyU2VGzvu2neSaFywZTDK?usp=sharing")),
       ),
     );
   }
@@ -979,7 +979,7 @@ class PTE extends StatelessWidget {
       body: InAppWebView(
         initialUrlRequest: URLRequest(
             url: Uri.parse(
-                "https://drive.google.com/drive/folders/1NRCFCrLr7rKi8UC0tp7AL6sQi7SZNksU?usp=sharing")),
+                "https://drive.google.com/drive/folders/11e6S5xrp2LHZIJM98-jeVcbDuFl0dX5h?usp=sharing")),
       ),
     );
   }
@@ -998,7 +998,7 @@ class TOEFL extends StatelessWidget {
       body: InAppWebView(
         initialUrlRequest: URLRequest(
             url: Uri.parse(
-                "https://drive.google.com/drive/folders/1PMQRg_DgF6H8xUs2iVx6TpLUeGYjyXTl?usp=sharing")),
+                "https://drive.google.com/drive/folders/15zNpvNjuaMf_61ZSiflpNkTNB8xJ3wP_?usp=sharing")),
       ),
     );
   }
@@ -1017,7 +1017,7 @@ class IELTS extends StatelessWidget {
       body: InAppWebView(
         initialUrlRequest: URLRequest(
             url: Uri.parse(
-                "https://drive.google.com/drive/folders/1Kz0xep3LhOWDcZ-y95EwRJIMDTKbSTyR?usp=share_link")),
+                "https://drive.google.com/drive/folders/1MOyxfMqjuZXfXdQFrMB1Eabnrb3s0v_x?usp=sharing")),
       ),
     );
   }
@@ -1036,7 +1036,7 @@ class Duolingo extends StatelessWidget {
       body: InAppWebView(
         initialUrlRequest: URLRequest(
             url: Uri.parse(
-                "https://drive.google.com/drive/folders/1ABhg1ufZ1_6y6GKZ5zH8j6z1DtR4PiCU?usp=share_link")),
+                "https://drive.google.com/drive/folders/13DCPEW26Vhm1NZJZcniRuCGFyYifabaI?usp=sharing")),
       ),
     );
   }

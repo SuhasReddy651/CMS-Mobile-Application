@@ -141,20 +141,6 @@ class _HelpDeskDashState extends State<HelpDeskDash> {
               ),
             ],
           ),
-          Column(
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 10.0,
-                ),
-                alignment: Alignment.center,
-                child: Image.asset(
-                  "assets/logo2.png",
-                  height: 100,
-                ),
-              ),
-            ],
-          ),
         ],
       ),
     );

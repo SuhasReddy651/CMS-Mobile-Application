@@ -227,10 +227,16 @@ class HallTicket extends StatelessWidget {
         title: const Text("Hall Ticket"),
         backgroundColor: Colors.black,
       ),
-      body: InAppWebView(
-        initialUrlRequest: URLRequest(
-          url: Uri.parse(
-              "https://drive.google.com/file/d/1zLAdr81MSPNwur3SpWGGCRPxG-ieHDFv/view?usp=sharing"),
+      body: Container(
+        alignment: Alignment.center,
+        color: const Color.fromARGB(255, 21, 21, 21),
+        child: const Text(
+          "This will be updated soon",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
+            fontFamily: "Georgia",
+          ),
         ),
       ),
     );
@@ -247,10 +253,16 @@ class IDCard extends StatelessWidget {
         title: const Text("ID Card"),
         backgroundColor: Colors.black,
       ),
-      body: InAppWebView(
-        initialUrlRequest: URLRequest(
-          url: Uri.parse(
-              "https://drive.google.com/file/d/1zLAdr81MSPNwur3SpWGGCRPxG-ieHDFv/view?usp=sharing"),
+      body: Container(
+        alignment: Alignment.center,
+        color: const Color.fromARGB(255, 21, 21, 21),
+        child: const Text(
+          "This will be updated soon",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
+            fontFamily: "Georgia",
+          ),
         ),
       ),
     );

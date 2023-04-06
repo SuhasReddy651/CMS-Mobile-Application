@@ -32,7 +32,7 @@ class _StaffAttCameraState extends State<StaffAttCamera> {
         _cameraController = CameraController(
             _cameras.firstWhere(
                 (camera) => camera.lensDirection == CameraLensDirection.front),
-            ResolutionPreset.high);
+            ResolutionPreset.medium);
         _cameraController.initialize().then((_) {
           if (!mounted) {
             return;
@@ -120,14 +120,10 @@ class _StaffAttCameraState extends State<StaffAttCamera> {
                     // Capture the image
                     final image = await _cameraController.takePicture();
 
-                    // Navigate to the Preview page with the captured image
-                    // ignore: use_build_context_synchronously
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => Preview(imagePath: image.path),
                     ));
                   } catch (e) {
-                    // Handle any errors that occur while capturing the image
-                    // ignore: avoid_print
                     print('Error capturing image: $e');
                   }
                 },
@@ -150,6 +146,7 @@ class Preview extends StatefulWidget {
   const Preview({Key? key, required this.imagePath}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PreviewState createState() => _PreviewState();
 }
 
