@@ -77,7 +77,7 @@ class _StaffCMState extends State<StaffCM> {
                               color: Color.fromARGB(255, 14, 69, 57),
                             ),
                             child: const Text(
-                              "Courses",
+                              "Your Courses",
                               style: TextStyle(
                                 fontSize: 20,
                               ),
@@ -114,7 +114,7 @@ class _StaffCMState extends State<StaffCM> {
                               top: 75.0,
                             ),
                             child: const Icon(
-                              Icons.book_rounded,
+                              Icons.library_books_rounded,
                               color: Color.fromARGB(255, 197, 196, 196),
                               size: 80,
                             ),
@@ -133,7 +133,7 @@ class _StaffCMState extends State<StaffCM> {
                               color: Color.fromARGB(193, 33, 12, 45),
                             ),
                             child: const Text(
-                              "Materials",
+                              "All Courses",
                               style: TextStyle(
                                 fontSize: 20,
                               ),
@@ -172,14 +172,25 @@ class _StaffCMState extends State<StaffCM> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Container(
-                            margin: const EdgeInsets.only(
-                              top: 75.0,
-                            ),
-                            child: const Icon(
-                              Icons.assignment_add,
-                              color: Color.fromARGB(255, 197, 196, 196),
-                              size: 80,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AssignmentsPortal(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(
+                                top: 75.0,
+                              ),
+                              child: const Icon(
+                                Icons.assignment_add,
+                                color: Color.fromARGB(255, 197, 196, 196),
+                                size: 80,
+                              ),
                             ),
                           ),
                           Container(
@@ -209,17 +220,6 @@ class _StaffCMState extends State<StaffCM> {
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(
-                top: 20.0,
-              ),
-              margin: const EdgeInsets.only(top: 20.0, bottom: 0),
-              alignment: Alignment.center,
-              child: Image.asset(
-                "assets/logo2.png",
-                height: 100,
-              ),
-            ),
           ],
         ),
       ),
@@ -227,3 +227,28 @@ class _StaffCMState extends State<StaffCM> {
   }
 }
 
+class AssignmentsPortal extends StatelessWidget {
+  const AssignmentsPortal({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Bus Routes"),
+        backgroundColor: Colors.black,
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        color: const Color.fromARGB(255, 21, 21, 21),
+        child: const Text(
+          "This will be updated soon",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
+            fontFamily: "Georgia",
+          ),
+        ),
+      ),
+    );
+  }
+}

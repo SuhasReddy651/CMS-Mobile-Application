@@ -106,23 +106,6 @@ class _LibraryDashState extends State<LibraryDash> {
               ),
             ],
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.only(
-                  top: 5.0,
-                ),
-                margin: const EdgeInsets.only(top: 20.0, bottom: 0),
-                alignment: Alignment.center,
-                child: Image.asset(
-                  "assets/logo2.png",
-                  height: 100,
-                ),
-              ),
-            ],
-          ),
         ],
       ),
     );

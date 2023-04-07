@@ -107,10 +107,11 @@ class _ParentSignInState extends State<ParentSignIn> {
                       password: _passwordController.text,
                     );
                     // ignore: use_build_context_synchronously
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ParentDash()));
+                            builder: (context) => const ParentDash()),
+                        (Route<dynamic> route) => false);
                   } on FirebaseAuthException catch (e) {
                     dynamic message = e.message;
                     showDialog(

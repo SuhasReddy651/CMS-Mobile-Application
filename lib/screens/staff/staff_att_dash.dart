@@ -82,7 +82,7 @@ class _StaffAttnDashState extends State<StaffAttnDash> {
                     "Student Attendance",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 30,
+                      fontSize: 25,
                     ),
                     textAlign: TextAlign.center,
                   ),
