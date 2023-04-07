@@ -1,9 +1,0 @@
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/Obama.jpg?alt=media&token=e91aee3c-6f52-4cb5-9e2c-9005a6a81db8	Barak Obama
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/Vinay.jpg?alt=media&token=b1c4ffd6-85a9-4be8-9d2f-00a910c58ff3	Seelam Vinay Reddy
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/JoeBiden.jpg?alt=media&token=af67a824-b525-434f-9aca-9c96aec1f7ff	Joe Biden
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/Ali.jpg?alt=media&token=66e1b60e-ccdb-4faa-bb6e-263cef4731a3	Shaik Sheeru Ali Moulali
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/Sarath.jpg?alt=media&token=f477700c-d547-433a-86c4-f1ff03f8b5a6	Sathi Sarath Venkata Reddy
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/suhas.JPG?alt=media&token=cb0a69be-461a-4e26-b3cf-a3fb04770d08	Sathi Surya Suhas Reddy
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/sunak.jpg?alt=media&token=8a50f5ba-0dbf-42d3-ac2b-c3efcbe7f062	Rishi Sunak
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/namo.jpg?alt=media&token=2317a8fc-ca61-499f-b665-457a07696b53	Narendra Modi
-https://firebasestorage.googleapis.com/v0/b/cms-cp-application.appspot.com/o/sadikh.jpg?alt=media&token=7888f391-4411-4b26-9ba0-6d253c9a2479	Shaik Mohammad Sadikh
