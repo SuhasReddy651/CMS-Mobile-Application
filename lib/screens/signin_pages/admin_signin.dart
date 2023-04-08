@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:project/screens/common%20screens/empty_page.dart';
 
+import '../options_page.dart';
 import '../parent/parent_dash.dart';
 
 class AdminSignIn extends StatefulWidget {
@@ -108,8 +110,10 @@ class _AdminSignInState extends State<AdminSignIn> {
                       password: _passwordController.text,
                     );
                     // ignore: use_build_context_synchronously
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const AdminHome()));
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (context) => const AdminHome()),
+                        (Route<dynamic> route) => false);
                   } on FirebaseAuthException catch (e) {
                     dynamic message = e.message;
                     showDialog(
@@ -174,139 +178,332 @@ class AdminHome extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        leading: Text(''),
+        leading: const Text(" "),
         title: const Text(
-          'Admin Dashboard',
-          style: TextStyle(fontSize: 25),
+          "Admin Portal",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
         ),
+        centerTitle: true,
+        actions: <Widget>[
+          PopupMenuButton(
+              surfaceTintColor: Colors.grey,
+              onSelected: (value) {
+                if (value == 'signout') {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const OptionsPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'signout',
+                      child: Text('Sign out'),
+                    ),
+                  ])
+        ],
         backgroundColor: Colors.black,
       ),
-      body: Container(
-        color: Colors.black,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
             children: [
+              SizedBox(
+                height: size.height * 0.03,
+                child: const Text(
+                  "To access the management portals first check the credentials!",
+                ),
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AttMangHome(),
+                      builder: (context) => const CredentialsPage(),
                     ),
                   );
                 },
                 child: Container(
-                    margin: const EdgeInsets.all(15),
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 64, 108, 186),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15.0),
-                      ),
+                  margin: const EdgeInsets.all(15),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 104, 8, 8),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15.0),
                     ),
-                    height: 251,
-                    width: 212,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          margin: const EdgeInsets.only(
-                            top: 75.0,
+                  ),
+                  height: size.height * 0.3,
+                  width: size.width * 0.85,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(
+                          top: 75.0,
+                        ),
+                        child: const Icon(
+                          Icons.password_rounded,
+                          color: Color.fromARGB(255, 227, 227, 227),
+                          size: 80,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                        ),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
                           ),
-                          child: const Icon(
-                            Icons.checklist_rounded,
-                            color: Color.fromARGB(255, 197, 196, 196),
-                            size: 80,
+                          color: Color.fromARGB(255, 74, 6, 6),
+                        ),
+                        child: const Text(
+                          "Credentials",
+                          style: TextStyle(
+                            fontSize: 20,
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.bottomCenter,
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            bottom: 10,
-                          ),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(15.0),
-                              bottomRight: Radius.circular(15.0),
-                            ),
-                            color: Color.fromARGB(255, 38, 65, 112),
-                          ),
-                          child: const Text(
-                            "Attendance Management",
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ]),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DBMan(),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(15),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 45, 131, 96),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15.0),
+                    ),
+                  ),
+                  height: size.height * 0.3,
+                  width: size.width * 0.85,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(
+                          top: 75.0,
+                        ),
+                        child: const Icon(
+                          Icons.storage_rounded,
+                          color: Colors.white,
+                          size: 80,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                        ),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
+                          ),
+                          color: Color.fromARGB(255, 28, 80, 59),
+                        ),
+                        child: const Text(
+                          "Database Management",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DSMan(),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(15),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 64, 108, 186),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15.0),
+                    ),
+                  ),
+                  height: size.height * 0.3,
+                  width: size.width * 0.85,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(
+                          top: 75.0,
+                        ),
+                        child: const Icon(
+                          Icons.cloud_rounded,
+                          color: Colors.white,
+                          size: 80,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                        ),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
+                          ),
+                          color: Color.fromARGB(255, 38, 65, 112),
+                        ),
+                        child: const Text(
+                          "Data Storage Management",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
-class AttMangHome extends StatefulWidget {
-  static var registered;
+class CredentialsPage extends StatelessWidget {
+  const CredentialsPage({super.key});
 
-  const AttMangHome({super.key});
-
-  @override
-  State<AttMangHome> createState() => _AttMangHomeState();
-}
-
-class _AttMangHomeState extends State<AttMangHome> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Container(
-              margin: const EdgeInsets.only(top: 100),
-              child: const Icon(
-                Icons.person_rounded,
-                size: 200,
-              )),
-          Container(
-            margin: const EdgeInsets.only(bottom: 50),
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const EmptyPage())); //registration
-                  },
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: Size(screenWidth - 30, 50)),
-                  child: const Text("Register"),
+      appBar: AppBar(
+        title: const Text("Credentials"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(15),
+              child: const Text(
+                "Email ID",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
                 ),
-                Container(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const EmptyPage())); //Recognition
-                  },
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: Size(screenWidth - 30, 50)),
-                  child: const Text("Recognize"),
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+            Container(
+              height: 50,
+              width: 350,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 47, 47, 47),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              alignment: Alignment.center,
+              child: const Text(
+                "finalprojectsist@gmail.com",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(15),
+              child: const Text(
+                "Password",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            Container(
+              height: 50,
+              width: 350,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 47, 47, 47),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              alignment: Alignment.center,
+              child: const Text(
+                "FinalProject@123",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DBMan extends StatelessWidget {
+  const DBMan({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Database Management"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(
+            url: Uri.parse(
+                "https://console.firebase.google.com/project/cms-cp-application/overview")),
+      ),
+    );
+  }
+}
+
+class DSMan extends StatelessWidget {
+  const DSMan({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Data Storage Management"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(
+            url: Uri.parse("https://drive.google.com/drive/my-drive")),
       ),
     );
   }
