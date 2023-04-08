@@ -93,7 +93,7 @@ class _StaffAttnDashState extends State<StaffAttnDash> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const StudentAttendance(),
+                      builder: (context) => const StaffAttReport(),
                     ),
                   );
                 },
@@ -125,39 +125,13 @@ class _StaffAttnDashState extends State<StaffAttnDash> {
   }
 }
 
-class StuAttRep extends StatefulWidget {
-  const StuAttRep({super.key});
+class StaffAttReport extends StatelessWidget {
+  const StaffAttReport({super.key});
 
-  @override
-  State<StuAttRep> createState() => _StuAttRepState();
-}
-
-class _StuAttRepState extends State<StuAttRep> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text(
-          "Attendance Report",
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        color: const Color.fromARGB(255, 36, 36, 36),
-        child: const Text(
-          "This will be updated soon",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontFamily: "Georgia",
-            fontSize: 30,
-          ),
-        ),
-      ),
+      body: Container(),
     );
   }
 }
