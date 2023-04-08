@@ -376,6 +376,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
                 final userName = user['name'];
                 final userImageUrl = user['photo'];
                 final type = user['class'];
+                final userid = user['uid'];
                 return ListTile(
                   selectedTileColor: Colors.grey,
                   contentPadding:
@@ -396,7 +397,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
                     // Check if a chat already exists
                     final existingChatsQuery = await FirebaseFirestore.instance
                         .collection('chats')
-                        .where('users', arrayContains: _currentUserId)
+                        .where('users', arrayContains: userid)
                         .get();
                     if (existingChatsQuery.docs.isNotEmpty) {
                       final chatId = existingChatsQuery.docs.first.id;
