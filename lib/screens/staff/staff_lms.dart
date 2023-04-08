@@ -1,3 +1,5 @@
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+
 import '../common screens/empty_page.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +38,7 @@ class _StaffCMState extends State<StaffCM> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const EmptyPage(),
+                          builder: (context) => const StfCourses(),
                         ),
                       );
                     },
@@ -92,7 +94,7 @@ class _StaffCMState extends State<StaffCM> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const EmptyPage(),
+                          builder: (context) => const StfAllCourses(),
                         ),
                       );
                     },
@@ -155,7 +157,7 @@ class _StaffCMState extends State<StaffCM> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const EmptyPage(),
+                          builder: (context) => const AssignmentsPortal(),
                         ),
                       );
                     },
@@ -227,6 +229,46 @@ class _StaffCMState extends State<StaffCM> {
   }
 }
 
+class StfCourses extends StatelessWidget {
+  const StfCourses({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("My Courses"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(
+            url: Uri.parse(
+                "https://drive.google.com/drive/folders/1FRRp0a6Wquvj9-jLft2kV-Wp9LYBy3Fk?usp=sharing")),
+      ),
+    );
+  }
+}
+
+class StfAllCourses extends StatelessWidget {
+  const StfAllCourses({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("All Courses"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(
+            url: Uri.parse(
+                "https://drive.google.com/drive/folders/1UWWT0RDofrei4LUGV2Hjk866-7VZDgXK?usp=sharing")),
+      ),
+    );
+  }
+}
+
 class AssignmentsPortal extends StatelessWidget {
   const AssignmentsPortal({super.key});
 
@@ -234,7 +276,7 @@ class AssignmentsPortal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bus Routes"),
+        title: const Text("Assignments Portal"),
         backgroundColor: Colors.black,
       ),
       body: Container(
