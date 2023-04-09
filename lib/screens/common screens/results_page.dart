@@ -15,7 +15,7 @@ class _ResultsPageState extends State<ResultsPage> {
   CollectionReference ref = FirebaseFirestore.instance
       .collection('users')
       .doc(FirebaseAuth.instance.currentUser?.uid)
-      .collection('result');
+      .collection('results');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,7 +117,7 @@ class ViewResult extends StatelessWidget {
         FirebaseFirestore.instance
             .collection('users')
             .doc(FirebaseAuth.instance.currentUser?.uid)
-            .collection('result');
+            .collection('results');
     DocumentReference<Map<String, dynamic>> documentReference =
         collectionReference.doc(id);
 
