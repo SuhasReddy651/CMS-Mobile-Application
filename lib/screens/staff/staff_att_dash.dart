@@ -1,10 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project/screens/attendance/self_button.dart';
-import 'package:project/screens/attendance/staff_camera.dart';
 import 'package:project/screens/attendance/stu_att_marking.dart';
-import 'package:project/screens/staff/attendance_page.dart';
-import '../common screens/empty_page.dart';
 
 class StaffAttnDash extends StatefulWidget {
   const StaffAttnDash({super.key});
@@ -93,7 +91,7 @@ class _StaffAttnDashState extends State<StaffAttnDash> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const StaffAttReport(),
+                      builder: (context) => const StfAttReport(),
                     ),
                   );
                 },
@@ -125,13 +123,91 @@ class _StaffAttnDashState extends State<StaffAttnDash> {
   }
 }
 
-class StaffAttReport extends StatelessWidget {
-  const StaffAttReport({super.key});
+class StfAttReport extends StatefulWidget {
+  const StfAttReport({super.key});
 
+  @override
+  State<StfAttReport> createState() => _StfAttReportState();
+}
+
+class _StfAttReportState extends State<StfAttReport> {
+  CollectionReference ref = FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser?.uid)
+      .collection('attendance');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      appBar: AppBar(
+        title: const Text("Attendance Report"),
+        backgroundColor: Colors.black,
+      ),
+      body: FutureBuilder<QuerySnapshot>(
+        future: ref.get(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // ignore: prefer_is_empty
+            if (snapshot.data?.docs.length == 0) {
+              return const Center(
+                child: Text(
+                  "You have no attendance history to show !",
+                  style: TextStyle(
+                    color: Color.fromARGB(200, 255, 255, 255),
+                  ),
+                ),
+              );
+            }
+
+            return Scaffold(
+              body: Container(
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  top: 30,
+                ),
+                child: ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    // ignore: unnecessary_new, unused_local_variable
+                    Color bg = const Color.fromARGB(221, 55, 55, 55);
+                    Map? data = snapshot.data?.docs[index].data() as Map?;
+
+                    return InkWell(
+                      child: Card(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        color: bg,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${data!['date']}",
+                                style: const TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(221, 255, 255, 255),
+                                ),
+                              ),
+                              //
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            );
+          } else {
+            return const Center(
+              child: Text("Loading..."),
+            );
+          }
+        },
+      ),
     );
   }
 }

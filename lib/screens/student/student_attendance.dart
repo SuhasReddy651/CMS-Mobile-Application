@@ -119,19 +119,9 @@ class _DailyAttState extends State<DailyAtt> {
       appBar: AppBar(
         title: const Text("Daily Attendance"),
         backgroundColor: Colors.black,
+        centerTitle: true,
       ),
-      body: Container(
-        alignment: Alignment.center,
-        color: const Color.fromARGB(255, 21, 21, 21),
-        child: const Text(
-          "This will be updated soon",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30,
-            fontFamily: "Georgia",
-          ),
-        ),
-      ),
+      body: Container(),
     );
   }
 }
@@ -142,22 +132,17 @@ class AttReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Attendance Report"),
-        backgroundColor: Colors.black,
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        color: const Color.fromARGB(255, 21, 21, 21),
-        child: const Text(
-          "This will be updated soon",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30,
-            fontFamily: "Georgia",
-          ),
+        appBar: AppBar(
+          title: const Text("Attendance Report"),
+          backgroundColor: Colors.black,
+          centerTitle: true,
         ),
-      ),
-    );
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              Container(),
+            ],
+          ),
+        ));
   }
 }
