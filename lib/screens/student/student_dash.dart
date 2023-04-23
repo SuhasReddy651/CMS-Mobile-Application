@@ -36,7 +36,7 @@ class _StudentDashState extends State<StudentDash> {
               child: CircularProgressIndicator(),
             );
           }
-          final data = snapshot.data?.data();
+          late final data = snapshot.data?.data();
           late final photo = data!['photo'];
           late final name = data!['name'];
           // ignore: avoid_unnecessary_containers
@@ -66,7 +66,7 @@ class _StudentDashState extends State<StudentDash> {
                                   ),
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                    name + '\'s',
+                                    name! + '\'s',
                                     style: const TextStyle(
                                       fontSize: 20,
                                     ),
@@ -101,7 +101,7 @@ class _StudentDashState extends State<StudentDash> {
                               ),
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(
-                                  photo,
+                                  photo!,
                                 ),
                                 radius: 60,
                               ),

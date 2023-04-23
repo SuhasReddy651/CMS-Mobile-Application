@@ -418,7 +418,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
                           .collection('chats')
                           .add({});
                       final chatId = chatDoc.id;
-                      final chatUsers = [_currentUserId, userId];
+                      final chatUsers = [_currentUserId, userid];
                       final chatData = {
                         'users': chatUsers,
                         'lastMessage': null,

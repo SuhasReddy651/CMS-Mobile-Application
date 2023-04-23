@@ -36,7 +36,7 @@ class _StaffDashState extends State<StaffDash> {
           );
         }
         final data = snapshot.data!.data();
-        late String photo = data!['photo'], name = data!['name'];
+        late final photo = data!['photo'], name = data!['name'];
         // ignore: avoid_unnecessary_containers
         return Container(
           child: Stack(
@@ -64,7 +64,7 @@ class _StaffDashState extends State<StaffDash> {
                                 ),
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  name + "'s",
+                                  name + '\'s',
                                   style: const TextStyle(
                                     fontSize: 20,
                                   ),
