@@ -98,7 +98,7 @@ class _ChatsHomeScreenState extends State<ChatsHomeScreen> {
                           textAlign: TextAlign.start,
                         ),
                         subtitle: Text(
-                          chat['lastmessage'] ?? '',
+                          chat['lastMessage'] ?? '',
                           textAlign: TextAlign.start,
                         ),
                         onTap: () {
@@ -208,7 +208,7 @@ class _ChatScreenState extends State<ChatScreen> {
     await FirebaseFirestore.instance
         .collection('chats')
         .doc(widget.chatId)
-        .update({'lastmessage': latestTitle});
+        .update({'lastMessage': latestTitle});
 
     _messageController.clear();
   }
@@ -257,7 +257,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   itemBuilder: (context, index) {
                     final message = messages[index];
                     final senderId = message['senderId'];
-                    final isMe = senderId == widget.currentUserId;
+                    final isMe =
+                        senderId == FirebaseAuth.instance.currentUser?.uid;
                     return Container(
                       alignment:
                           isMe ? Alignment.centerRight : Alignment.centerLeft,
@@ -397,8 +398,10 @@ class _NewChatScreenState extends State<NewChatScreen> {
                     // Check if a chat already exists
                     final existingChatsQuery = await FirebaseFirestore.instance
                         .collection('chats')
-                        .where('users', arrayContains: userid)
-                        .get();
+                        .where(
+                      'users',
+                      isEqualTo: [_currentUserId, userId],
+                    ).get();
                     if (existingChatsQuery.docs.isNotEmpty) {
                       final chatId = existingChatsQuery.docs.first.id;
                       // ignore: use_build_context_synchronously
@@ -418,7 +421,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
                           .collection('chats')
                           .add({});
                       final chatId = chatDoc.id;
-                      final chatUsers = [_currentUserId, userid];
+                      final chatUsers = [_currentUserId, userId];
                       final chatData = {
                         'users': chatUsers,
                         'lastMessage': null,
